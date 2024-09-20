@@ -1,9 +1,0 @@
-services:
-  backend:
-    build:
-      context: '.'
-      dockerfile: Dockerfile
-    container_name: room_occupancy_optimisation_service
-    restart: always
-    ports:
-      - 8080:8080
