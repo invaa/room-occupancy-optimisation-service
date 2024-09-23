@@ -2,7 +2,6 @@ package com.beusable.roos.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-
 import java.math.BigDecimal;
 import java.util.List;
 

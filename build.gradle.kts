@@ -1,7 +1,8 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.3.4"
-	id("io.spring.dependency-management") version "1.1.6"
+	alias(libs.plugins.spring.dependency.management) apply false
+	alias(libs.plugins.spring.framework.boot) apply false
+	alias(libs.plugins.spotless)
 }
 
 group = "com.beusable"
@@ -24,22 +25,32 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-validation")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation(libs.spring.boot.starter)
+	implementation(libs.spring.boot.starter.validation)
+	implementation(libs.spring.boot.starter.web)
+	implementation(libs.spring.boot.starter.actuator)
 
 	// Lombok
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
+	compileOnly(libs.lombok)
+	annotationProcessor(libs.lombok)
 
 	// Testing
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
-	testImplementation("org.testcontainers:junit-jupiter")
-	testImplementation("org.assertj:assertj-core:3.26.3")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation(libs.assertj)
+	testImplementation(libs.spring.boot.starter.test)
+	testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+spotless {
+	java {
+		trimTrailingWhitespace()
+		indentWithSpaces()
+		importOrder()
+		removeUnusedImports()
+		cleanthat()
+		formatAnnotations()
+	}
 }

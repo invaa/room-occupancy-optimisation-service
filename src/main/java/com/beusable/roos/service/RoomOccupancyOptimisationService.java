@@ -1,14 +1,13 @@
 package com.beusable.roos.service;
 
+import static com.beusable.roos.config.DefaultConstants.PREMIUM_PRICE_THRESHOLD;
+
 import com.beusable.roos.model.RoomAllocationRequest;
 import com.beusable.roos.model.RoomAllocationResponse;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import static com.beusable.roos.config.DefaultConstants.PREMIUM_PRICE_THRESHOLD;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RoomOccupancyOptimisationService {

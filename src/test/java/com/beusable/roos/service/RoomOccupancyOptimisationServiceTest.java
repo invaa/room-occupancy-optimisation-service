@@ -1,14 +1,13 @@
 package com.beusable.roos.service;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
 import com.beusable.roos.TestBase;
 import com.beusable.roos.model.RoomAllocationRequest;
 import com.beusable.roos.model.RoomAllocationResponse;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-
-import java.util.List;
-
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class RoomOccupancyOptimisationServiceTest extends TestBase {
 

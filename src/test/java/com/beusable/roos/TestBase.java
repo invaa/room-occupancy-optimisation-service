@@ -12,7 +12,6 @@ public class TestBase {
         return new BigDecimal(value);
     }
 
-    protected static final List<BigDecimal> POTENTIAL_GUESTS = List.of(
-            b(23), b(45), b(155), b(374), b(22),
-            b("99.99"), b(100), b(101), b(115), b(209));
+    protected static final List<BigDecimal> POTENTIAL_GUESTS =
+            List.of(b(23), b(45), b(155), b(374), b(22), b("99.99"), b(100), b(101), b(115), b(209));
 }

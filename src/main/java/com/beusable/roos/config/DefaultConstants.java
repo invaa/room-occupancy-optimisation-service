@@ -1,9 +1,8 @@
 package com.beusable.roos.config;
 
+import java.math.BigDecimal;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DefaultConstants {

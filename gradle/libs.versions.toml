@@ -1,0 +1,21 @@
+[versions]
+spring-boot-version = "3.3.4"
+spring-dependency-management-version = "1.1.6"
+assertj-version = "3.26.3"
+lombok-version = "1.18.32"
+spotless-version = "6.25.0"
+
+[libraries]
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
+spring-boot-starter = { group = "org.springframework.boot", name = "spring-boot-starter" }
+spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot-version" }
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot-version" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "spring-boot-version" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "spring-boot-version" }
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
+
+[plugins]
+spring-framework-boot = { id = "org.springframework.boot", version.ref = "spring-boot-version" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management-version" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless-version" }
