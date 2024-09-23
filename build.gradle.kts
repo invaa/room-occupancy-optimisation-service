@@ -37,11 +37,11 @@ dependencies {
 
 	// Traceability
 	implementation(libs.micrometer.tracing)
-	testImplementation(libs.lombok)
 
 	// Lombok
 	compileOnly(libs.lombok)
 	annotationProcessor(libs.lombok)
+	testImplementation(libs.lombok)
 
 	// Testing
 	testImplementation(libs.assertj)
