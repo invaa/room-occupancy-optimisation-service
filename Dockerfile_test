@@ -1,0 +1,21 @@
+FROM eclipse-temurin:21-jdk-jammy
+
+# set up the environment
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 spring
+RUN apt update
+RUN apt install -y git
+RUN git clone https://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@github.com/invaa/room-occupancy-optimisation-service.git
+
+# build and test
+RUN cd room-occupancy-optimisation-service && ./gradlew check bootJar
+RUN cd ..
+RUN cp ./room-occupancy-optimisation-service/build/libs/*.jar /app.jar
+RUN cp ./room-occupancy-optimisation-service/run.sh /run.sh
+RUN rm -r room-occupancy-optimisation-service
+
+# good practice is to run app from specific non-root user
+USER spring
+
+WORKDIR /
+
+ENTRYPOINT ["bin/sh", "run.sh"]
