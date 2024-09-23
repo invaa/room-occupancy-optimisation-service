@@ -30,6 +30,9 @@ dependencies {
 	implementation(libs.spring.boot.starter.web)
 	implementation(libs.spring.boot.starter.actuator)
 
+	// Traceability
+	implementation(libs.micrometer.tracing)
+
 	// Lombok
 	compileOnly(libs.lombok)
 	annotationProcessor(libs.lombok)
