@@ -20,10 +20,10 @@ class RoomOccupancyOptimisationServiceTest extends TestBase {
 
         RoomAllocationResponse response = roomOccupancyService.allocate(request);
 
-        assertThat(response.usagePremium()).isEqualTo(6);
-        assertThat(response.revenuePremium()).isEqualTo(b(1054));
-        assertThat(response.usageEconomy()).isEqualTo(4);
-        assertThat(response.revenueEconomy()).isEqualTo(b("189.99"));
+        assertThat(response.getUsagePremium()).isEqualTo(6);
+        assertThat(response.getRevenuePremium()).isEqualTo(b(1054));
+        assertThat(response.getUsageEconomy()).isEqualTo(4);
+        assertThat(response.getRevenueEconomy()).isEqualTo(b("189.99"));
     }
 
     @Test
@@ -32,10 +32,10 @@ class RoomOccupancyOptimisationServiceTest extends TestBase {
 
         RoomAllocationResponse response = roomOccupancyService.allocate(request);
 
-        assertThat(response.usagePremium()).isEqualTo(3);
-        assertThat(response.revenuePremium()).isEqualTo(b(738));
-        assertThat(response.usageEconomy()).isEqualTo(3);
-        assertThat(response.revenueEconomy()).isEqualTo(b("167.99"));
+        assertThat(response.getUsagePremium()).isEqualTo(3);
+        assertThat(response.getRevenuePremium()).isEqualTo(b(738));
+        assertThat(response.getUsageEconomy()).isEqualTo(3);
+        assertThat(response.getRevenueEconomy()).isEqualTo(b("167.99"));
     }
 
     @Test
@@ -44,10 +44,10 @@ class RoomOccupancyOptimisationServiceTest extends TestBase {
 
         RoomAllocationResponse response = roomOccupancyService.allocate(request);
 
-        assertThat(response.usagePremium()).isEqualTo(2);
-        assertThat(response.revenuePremium()).isEqualTo(b(583));
-        assertThat(response.usageEconomy()).isEqualTo(4);
-        assertThat(response.revenueEconomy()).isEqualTo(b("189.99"));
+        assertThat(response.getUsagePremium()).isEqualTo(2);
+        assertThat(response.getRevenuePremium()).isEqualTo(b(583));
+        assertThat(response.getUsageEconomy()).isEqualTo(4);
+        assertThat(response.getRevenueEconomy()).isEqualTo(b("189.99"));
     }
 
     @Test
@@ -56,10 +56,10 @@ class RoomOccupancyOptimisationServiceTest extends TestBase {
 
         RoomAllocationResponse response = roomOccupancyService.allocate(request);
 
-        assertThat(response.usagePremium()).isZero();
-        assertThat(response.revenuePremium()).isEqualTo(b(0));
-        assertThat(response.usageEconomy()).isZero();
-        assertThat(response.revenueEconomy()).isEqualTo(b(0));
+        assertThat(response.getUsagePremium()).isZero();
+        assertThat(response.getRevenuePremium()).isEqualTo(b(0));
+        assertThat(response.getUsageEconomy()).isZero();
+        assertThat(response.getRevenueEconomy()).isEqualTo(b(0));
     }
 
     @Test
@@ -68,10 +68,10 @@ class RoomOccupancyOptimisationServiceTest extends TestBase {
 
         RoomAllocationResponse response = roomOccupancyService.allocate(request);
 
-        assertThat(response.usagePremium()).isZero();
-        assertThat(response.revenuePremium()).isEqualTo(b(0));
-        assertThat(response.usageEconomy()).isZero();
-        assertThat(response.revenueEconomy()).isEqualTo(b(0));
+        assertThat(response.getUsagePremium()).isZero();
+        assertThat(response.getRevenuePremium()).isEqualTo(b(0));
+        assertThat(response.getUsageEconomy()).isZero();
+        assertThat(response.getRevenueEconomy()).isEqualTo(b(0));
     }
 
     @Test
@@ -80,9 +80,9 @@ class RoomOccupancyOptimisationServiceTest extends TestBase {
 
         RoomAllocationResponse response = roomOccupancyService.allocate(request);
 
-        assertThat(response.usagePremium()).isZero();
-        assertThat(response.revenuePremium()).isEqualTo(b(0));
-        assertThat(response.usageEconomy()).isZero();
-        assertThat(response.revenueEconomy()).isEqualTo(b(0));
+        assertThat(response.getUsagePremium()).isZero();
+        assertThat(response.getRevenuePremium()).isEqualTo(b(0));
+        assertThat(response.getUsageEconomy()).isZero();
+        assertThat(response.getRevenueEconomy()).isEqualTo(b(0));
     }
 }

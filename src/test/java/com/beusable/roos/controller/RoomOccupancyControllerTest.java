@@ -38,7 +38,8 @@ class RoomOccupancyControllerTest extends TestBase {
     void shouldAllocateWhenSevenAndFiveRoomsRequested() throws Exception {
         RoomAllocationRequest request = new RoomAllocationRequest(7, 5, POTENTIAL_GUESTS);
 
-        RoomAllocationResponse response = new RoomAllocationResponse(7, b(1054), 5, b("189.99"));
+        RoomAllocationResponse response = RoomAllocationResponse.builder().usagePremium(7).revenuePremium(b(1054))
+                                                                .usageEconomy(5).revenueEconomy(b("189.99")).build();
 
         given(roomOccupancyOptimisationService.allocate(any(RoomAllocationRequest.class)))
                 .willReturn(response);
@@ -57,7 +58,8 @@ class RoomOccupancyControllerTest extends TestBase {
     void shouldAllocateWhenThreeAndThreeRoomsRequested() throws Exception {
         RoomAllocationRequest request = new RoomAllocationRequest(3, 3, POTENTIAL_GUESTS);
 
-        RoomAllocationResponse response = new RoomAllocationResponse(3, b(738), 3, b("167.99"));
+        RoomAllocationResponse response = RoomAllocationResponse.builder().usagePremium(3).revenuePremium(b(738))
+                                                                .usageEconomy(3).revenueEconomy(b("167.99")).build();
 
         given(roomOccupancyOptimisationService.allocate(any(RoomAllocationRequest.class)))
                 .willReturn(response);
@@ -76,7 +78,8 @@ class RoomOccupancyControllerTest extends TestBase {
     void shouldAllocateWhenTwoAndSevenRoomsRequested() throws Exception {
         RoomAllocationRequest request = new RoomAllocationRequest(2, 7, POTENTIAL_GUESTS);
 
-        RoomAllocationResponse response = new RoomAllocationResponse(2, b(583), 7, b("265.99"));
+        RoomAllocationResponse response = RoomAllocationResponse.builder().usagePremium(2).revenuePremium(b(583))
+                                                                .usageEconomy(7).revenueEconomy(b("265.99")).build();
 
         given(roomOccupancyOptimisationService.allocate(any(RoomAllocationRequest.class)))
                 .willReturn(response);
@@ -125,7 +128,8 @@ class RoomOccupancyControllerTest extends TestBase {
     void shouldAllocateWhenZeroRoomsRequested() throws Exception {
         RoomAllocationRequest request = new RoomAllocationRequest(0, 0, POTENTIAL_GUESTS);
 
-        RoomAllocationResponse response = new RoomAllocationResponse(0, BigDecimal.ZERO, 0, BigDecimal.ZERO);
+        RoomAllocationResponse response = RoomAllocationResponse.builder().usagePremium(0).revenuePremium(BigDecimal.ZERO)
+                                                                .usageEconomy(0).revenueEconomy(BigDecimal.ZERO).build();
 
         given(roomOccupancyOptimisationService.allocate(any(RoomAllocationRequest.class)))
                 .willReturn(response);

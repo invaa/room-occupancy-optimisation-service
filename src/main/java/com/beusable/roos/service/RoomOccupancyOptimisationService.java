@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class RoomOccupancyOptimisationService {
 
     public RoomAllocationResponse allocate(RoomAllocationRequest request) {
-        var guestPayments = new ArrayList<>(request.potentialGuests());
+        var guestPayments = new ArrayList<>(request.getPotentialGuests());
         guestPayments.sort(Collections.reverseOrder());
 
         var premiumRoomsOccupied = 0;
@@ -38,15 +38,21 @@ public class RoomOccupancyOptimisationService {
                 }
             }
         }
-        return new RoomAllocationResponse(premiumRoomsOccupied, revenuePremium, economyRoomsOccupied, revenueEconomy);
+        return RoomAllocationResponse
+                .builder()
+                .revenueEconomy(revenueEconomy)
+                .revenuePremium(revenuePremium)
+                .usageEconomy(economyRoomsOccupied)
+                .usagePremium(premiumRoomsOccupied)
+                .build();
     }
 
     private boolean isEconomyRoomsAvailable(RoomAllocationRequest request, int economyRoomsOccupied) {
-        return economyRoomsOccupied < request.economyRooms();
+        return economyRoomsOccupied < request.getEconomyRooms();
     }
 
     private boolean isPremiumRoomsAvailable(RoomAllocationRequest request, int premiumRoomsOccupied) {
-        return premiumRoomsOccupied < request.premiumRooms();
+        return premiumRoomsOccupied < request.getPremiumRooms();
     }
 
     private boolean isPremiumGuest(BigDecimal payment) {

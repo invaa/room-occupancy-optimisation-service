@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Room Occupancy Optimization API
+  description: API for optimizing room allocation in hotels by calculating room usage and revenue.
+  version: 0.0.1-SNAPSHOT
+
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /occupancy:
+    post:
+      summary: Allocate rooms based on availability and guest payments
+      description: Given the number of premium and economy rooms and potential guests with their willingness to pay, allocate rooms and calculate total revenue.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomAllocationRequest'
+            example:
+              premiumRooms: 7
+              economyRooms: 5
+              potentialGuests: [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+      responses:
+        '200':
+          description: Successfully allocated rooms and calculated revenue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomAllocationResponse'
+              example:
+                usagePremium: 6
+                revenuePremium: 1054
+                usageEconomy: 4
+                revenueEconomy: 189.99
+        '400':
+          description: Bad request due to validation errors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+              example:
+                guestPayments: "Each guest payment must be greater than zero"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "An unexpected error occurred"
+                  error:
+                    type: string
+                    example: "NullPointerException"
+
+components:
+  schemas:
+    RoomAllocationRequest:
+      type: object
+      properties:
+        premiumRooms:
+          type: integer
+          description: Number of premium rooms available
+          example: 7
+          minimum: 0
+        economyRooms:
+          type: integer
+          description: Number of economy rooms available
+          example: 5
+          minimum: 0
+        potentialGuests:
+          type: array
+          description: Array of guest payments (willingness to pay), each number should be positive
+          items:
+            type: number
+            minimum: 0
+            format: double
+          example: [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+      required:
+        - premiumRooms
+        - economyRooms
+        - potentialGuests
+
+    RoomAllocationResponse:
+      type: object
+      properties:
+        usagePremium:
+          type: integer
+          description: Number of premium rooms occupied
+          example: 6
+        revenuePremium:
+          type: number
+          format: double
+          description: Total revenue generated from premium rooms
+          example: 1054
+        usageEconomy:
+          type: integer
+          description: Number of economy rooms occupied
+          example: 4
+        revenueEconomy:
+          type: number
+          format: double
+          description: Total revenue generated from economy rooms
+          example: 189.99
