@@ -1,23 +1,19 @@
 package com.beusable.roos.service;
 
+import com.beusable.roos.TestBase;
 import com.beusable.roos.model.RoomAllocationRequest;
 import com.beusable.roos.model.RoomAllocationResponse;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-class RoomOccupancyOptimisationServiceTest {
+class RoomOccupancyOptimisationServiceTest extends TestBase {
 
     @InjectMocks
     private final RoomOccupancyOptimisationService roomOccupancyService = new RoomOccupancyOptimisationService();
-
-    private static final List<BigDecimal> POTENTIAL_GUESTS = List.of(
-            b(23), b(45), b(155), b(374), b(22),
-            b("99.99"), b(100), b(101), b(115), b(209));
 
     @Test
     void shouldAllocateWhenSevenAndFiveRoomsRequested() {
@@ -89,13 +85,5 @@ class RoomOccupancyOptimisationServiceTest {
         assertThat(response.revenuePremium()).isEqualTo(b(0));
         assertThat(response.usageEconomy()).isZero();
         assertThat(response.revenueEconomy()).isEqualTo(b(0));
-    }
-
-    private static BigDecimal b(double value) {
-        return new BigDecimal(value);
-    }
-
-    private static BigDecimal b(String value) {
-        return new BigDecimal(value);
     }
 }

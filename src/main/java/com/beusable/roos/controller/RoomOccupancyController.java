@@ -3,6 +3,7 @@ package com.beusable.roos.controller;
 import com.beusable.roos.model.RoomAllocationRequest;
 import com.beusable.roos.model.RoomAllocationResponse;
 import com.beusable.roos.service.RoomOccupancyOptimisationService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ public class RoomOccupancyController {
     private final RoomOccupancyOptimisationService roomOccupancyOptimisationService;
 
     @PostMapping
-    public RoomAllocationResponse allocateRooms(@RequestBody RoomAllocationRequest request) {
+    public RoomAllocationResponse allocateRooms(@RequestBody @Valid RoomAllocationRequest request) {
         return roomOccupancyOptimisationService.allocate(request);
     }
 }
