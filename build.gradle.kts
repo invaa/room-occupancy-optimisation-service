@@ -1,7 +1,7 @@
 plugins {
 	java
 	alias(libs.plugins.spring.dependency.management) apply false
-	alias(libs.plugins.spring.framework.boot) apply false
+	alias(libs.plugins.spring.framework.boot) apply true
 	alias(libs.plugins.spotless)
 	alias(libs.plugins.openapi.generator)
 }
@@ -66,7 +66,6 @@ spotless {
 
 openApiGenerate {
 	generatorName.set("spring")
-	//library.set("spring-boot")
 	inputSpec.set("$projectDir/openapi/api.yaml")
 	outputDir.set("$projectDir/build/generated")
 	apiPackage.set("com.beusable.roos.api")
@@ -76,9 +75,6 @@ openApiGenerate {
 	configOptions.put("skipDefaultInterface", "true")
 	configOptions.put("useSpringBoot3", "true")
 	configOptions.put("useBeanValidation", "true")
-	configOptions.put("useJakartaEe", "true")
-	configOptions.put("useResponseEntity", "true")
-	configOptions.put("performBeanValidation", "true")
 	configOptions.put("additionalModelTypeAnnotations", "@lombok.Builder;")
 }
 
