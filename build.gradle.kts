@@ -55,6 +55,7 @@ tasks.withType<Test> {
 
 spotless {
 	java {
+		targetExclude("**/build/generated/**/*.java")
 		trimTrailingWhitespace()
 		indentWithSpaces()
 		importOrder()
