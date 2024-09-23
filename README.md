@@ -1,6 +1,12 @@
 # Running the project without docker
 `./gradlew bootRun`
 
+# Testing
+In order to run unit tests and component tests run ./gradlew check
+
+# Testing manually
+Please use the postman collection from /postman folder
+
 # Running the project with docker
 Please use the Dockerfile image. First, build the jar using ./gradlew check bootJar, then build the image using the Dockerfile and then run it.
 `docker build . -t roos`
