@@ -1,3 +1,5 @@
+# Dockerfile for running the app locally or for deploying to all environments
+
 FROM eclipse-temurin:21-jdk-jammy
 
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 spring
