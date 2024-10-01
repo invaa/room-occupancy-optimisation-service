@@ -36,7 +36,7 @@ Please use the Dockerfile image. First, build the jar using ./gradlew check boot
 Since it's not clear how that container and context looks like (see the discussion below), I'm assuming the image pulls the code from git and builds it when being built.
 
 To build the image:
-`docker build . --no-cache -f Dockerfile_test --build-arg GH_PAT=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 -t roos_test`
+`docker build . --no-cache -f Dockerfile_test --build-arg GH_PAT=<token> -t roos_test`
 
 To run on port 8080:
 `docker run -p 8080:8080 roos_test` 
